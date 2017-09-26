@@ -22,7 +22,6 @@ end
 
 get("/surveys/:id") do
   @survey = Survey.find(params.fetch("id").to_i())
-  # @volunteers = @project.volunteers
   erb(:survey)
 end
 
@@ -35,6 +34,13 @@ patch("/surveys/:id") do
   name = params.fetch("name")
   @survey = Survey.find(params.fetch("id").to_i())
   @survey.update({:name => name})
-  # @volunteers = @survey.volunteers
+  erb(:survey)
+end
+
+post("/surveys/:id") do
+  name = params.fetch("name")
+  survey_id = params.fetch("survey_id").to_i()
+  @survey = Survey.find(survey_id)
+  Question.create({:name => name, :survey_id => survey_id})
   erb(:survey)
 end

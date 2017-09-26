@@ -3,6 +3,26 @@
 <br />
 <br />
 
-<!-- question list will be added -->
+<h4>Add questions:</h4>
+
+<form action="/surveys/<%=@survey.id%>" method="post">
+  <input id="survey_id" name="survey_id" type="hidden" value="<%= @survey.id %>">
+  <input id="name" name="name" type="text">
+  <button type="submit">Create Question</button>
+</form>
+<br />
+
+<h4>Current questions for this survey:</h4>
+
+<% if @survey.questions().any?() %>
+  <ul>
+    <% @survey.questions().each() do |question| %>
+      <li><a href='/<%=@survey.id %>/<%=question.id %>'><%= question.name %> </a></li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no questions on this survey!</p>
+<% end %>
 
 <a href="/">Home</a>
