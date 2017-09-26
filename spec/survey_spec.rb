@@ -11,4 +11,5 @@ describe(Survey) do
     survey = Survey.create({:name => ""})
   expect(survey.save). to eq(false)
   end
+
 end
