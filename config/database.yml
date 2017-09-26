@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: survey_development
+
+test:
+  adapter: postgresql
+  database: survey_test
+
+# the above identifies the databases and type of (development and test) we are connecting to this project
