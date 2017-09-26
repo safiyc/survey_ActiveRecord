@@ -2,6 +2,7 @@
 # AR makes the code dry:
 
 class Survey < ActiveRecord::Base
+  validates(:name, :presence => true)
   before_save(:upcase_name)
 
 private
