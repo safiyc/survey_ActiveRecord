@@ -18,3 +18,23 @@ post("/") do
   @surveys = Survey.all()
   erb(:index)
 end
+
+
+get("/surveys/:id") do
+  @survey = Survey.find(params.fetch("id").to_i())
+  # @volunteers = @project.volunteers
+  erb(:survey)
+end
+
+get("/surveys/:id/edit") do
+  @survey =  Survey.find(params.fetch("id").to_i())
+  erb(:survey_edit)
+end
+
+patch("/surveys/:id") do
+  name = params.fetch("name")
+  @survey = Survey.find(params.fetch("id").to_i())
+  @survey.update({:name => name})
+  # @volunteers = @survey.volunteers
+  erb(:survey)
+end

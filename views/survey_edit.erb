@@ -1,0 +1,19 @@
+
+<h1><%= @survey.name %></h1>
+<br />
+
+<h4>Rename or Delete:</h4>
+
+<form style="display: inline" action="/surveys/<%= @survey.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input id="name" name="name" type="text">
+  <button type="submit">Update Survey</button>
+</form>
+
+<form style="display: inline;" action="/<%= @survey.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Survey</button>
+</form>
+<br />
+
+<a href="/">Home</a>
