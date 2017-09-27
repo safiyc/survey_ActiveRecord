@@ -40,3 +40,14 @@ describe 'the question creation path', {:type => :feature} do
     expect(page).to have_content('Which color describes you best?')
   end
 end
+
+describe 'the survey update path', {:type => :feature} do
+  it 'allows a user to delete the name of the survey' do
+    survey1 = Survey.create({:name => 'Color'})
+    visit '/'
+    click_link('COLOR')
+    click_link('Edit Name')
+    click_button('Delete Survey')
+    expect(page).not_to have_content('COLOR')
+  end
+end

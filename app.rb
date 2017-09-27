@@ -30,6 +30,7 @@ get("/surveys/:id/edit") do
   erb(:survey_edit)
 end
 
+# this is to change survey name
 patch("/surveys/:id") do
   name = params.fetch("name")
   @survey = Survey.find(params.fetch("id").to_i())
@@ -37,6 +38,14 @@ patch("/surveys/:id") do
   erb(:survey)
 end
 
+delete("/:id") do
+  @survey = Survey.find(params.fetch("id").to_i())
+  @survey.update({:name => name})
+  @surveys = Survey.all
+  erb(:index)
+end
+
+# this is to create questions
 post("/surveys/:id") do
   name = params.fetch("name")
   survey_id = params.fetch("survey_id").to_i()
