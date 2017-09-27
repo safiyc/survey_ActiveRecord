@@ -51,3 +51,31 @@ describe 'the survey update path', {:type => :feature} do
     expect(page).not_to have_content('COLOR')
   end
 end
+
+# no error manually clicking through steps, but rspec error:
+# Capybara::ElementNotFound:
+#        Unable to find visible button "Update Question"
+
+describe 'the question update path', {:type => :feature} do
+  it 'allows a user to change a question' do
+    survey1 = Survey.create({:name => 'color'})
+    visit '/'
+    click_link('COLOR')
+    fill_in('name', :with => 'Which color describes you best?')
+    click_button('Create Question')
+    fill_in('name', :with => 'Huh?')
+    click_button('Update Question')
+    expect(page).to have_content('Huh?')
+  end
+end
+
+# describe 'the question delete path', {:type => :feature} do
+#   it 'allows a user to delete a question' do
+#     survey1 = Survey.create({:name => 'color'})
+#     visit '/'
+#     click_link('COLOR')
+#     fill_in('name', :with => 'Which color describes you best?')
+#     click_button('Update Question')
+#     expect(page).not_to have_content('Which color describes you best?')
+#   end
+# end

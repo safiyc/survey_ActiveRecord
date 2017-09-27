@@ -66,3 +66,11 @@ patch("/questions/:id") do
   @question.update({:name => name})
   erb(:question_edit)
 end
+
+# need to work on delete routing path
+# delete("/surveys/:id") do
+#   @question = Question.find(params.fetch("id").to_i())
+#   @question.delete
+#   # Question.all
+#   erb(:survey)
+# end
