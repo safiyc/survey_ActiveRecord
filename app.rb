@@ -40,7 +40,7 @@ end
 
 delete("/:id") do
   @survey = Survey.find(params.fetch("id").to_i())
-  @survey.update({:name => name})
+  @survey.delete
   @surveys = Survey.all
   erb(:index)
 end
