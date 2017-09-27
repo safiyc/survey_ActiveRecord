@@ -17,7 +17,7 @@
 <% if @survey.questions().any?() %>
   <ul>
     <% @survey.questions().each() do |question| %>
-      <li><a href='/<%=@survey.id %>/<%=question.id %>'><%= question.name %> </a></li>
+      <li><a href='/questions/<%=question.id %>/edit'><%= question.name %> </a></li>
     <% end %>
   </ul>
 

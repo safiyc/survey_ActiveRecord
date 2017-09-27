@@ -53,3 +53,16 @@ post("/surveys/:id") do
   Question.create({:name => name, :survey_id => survey_id})
   erb(:survey)
 end
+
+# this is to update question
+get("/questions/:id/edit") do
+  @question = Question.find(params.fetch("id").to_i())
+  erb(:question_edit)
+end
+
+patch("/questions/:id") do
+  name = params.fetch("name")
+  @question = Question.find(params.fetch("id").to_i())
+  @question.update({:name => name})
+  erb(:question_edit)
+end
